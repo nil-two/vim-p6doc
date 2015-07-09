@@ -3,11 +3,11 @@
 " Author : wara <kusabashira227@gmail.com>
 " License: MIT License
 
-function! s:win_exists(bufnr)
+function! s:win_exists(bufnr) abort
   return bufwinnr(a:bufnr) != -1
 endfunction
 
-function! s:exit_with_success(command)
+function! s:exit_with_success(command) abort
   silent call system(a:command)
   if v:shell_error != 0
     return 0
@@ -16,11 +16,11 @@ function! s:exit_with_success(command)
   endif
 endfunction
 
-function! s:avariable_class(class)
+function! s:avariable_class(class) abort
   return s:exit_with_success('p6doc ' . a:class)
 endfunction
 
-function! s:avariable_func(func)
+function! s:avariable_func(func) abort
   return s:exit_with_success('p6doc -f ' . a:func)
 endfunction
 
@@ -64,7 +64,7 @@ function! s:docbuf.configure() abort
   \ call let <SID>p6doc_buffer_number = -1
 endfunction
 
-function! s:docbuf.open_doc(p6doc_args)
+function! s:docbuf.open_doc(p6doc_args) abort
   let wd = getcwd()
   call s:docbuf.open_buf()
   call s:docbuf.read_doc(a:p6doc_args)
@@ -72,7 +72,7 @@ function! s:docbuf.open_doc(p6doc_args)
   execute ':lcd ' . wd
 endfunction
 
-function! p6doc#open(...)
+function! p6doc#open(...) abort
   let keyword = join(a:000, ' ')
   if strlen(keyword) == 0
     let keyword = expand('<cword>')
