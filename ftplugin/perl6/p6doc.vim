@@ -1,6 +1,6 @@
 " Open perl6 document with p6doc
 " Version: 0.1.0
-" Author : kusabashira <kusabashira227@gmail.com>
+" Author : nil2 <nil2@nil2.org>
 " License: MIT License
 
 if exists('g:loaded_p6doc')
